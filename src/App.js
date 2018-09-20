@@ -61,10 +61,12 @@ class App extends Component {
     return (
       <div className="a">
       <div className="logo"><img src={logo}/></div>
+
         <Grid cards={cards} />
       </div>
     );
   }
+
 }
 
 export default App;
