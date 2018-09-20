@@ -29,5 +29,16 @@ li{
   #message{
     color: white;
     font-size: 2em;
-    font-family: sans-serif;
+    text-align: center;
+    font-family: 'Noto Serif KR', sans-serif;
+  }
+  #rejouer{
+    font-family: 'Noto Serif KR', sans-serif;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+  }
+  #rej {
+    font-family: 'Noto Serif KR', sans-serif;
+    font-size: 1em;
   }
