@@ -12,13 +12,25 @@ class Grid extends Component {
 
 
   componentDidMount () {
+    this.start();
+  }
+
+  start = () => {
     this.setState({ cards: shuffle([...this.props.cards, ...this.props.cards]) });
+  }
+
+  restart = () => {
+    this.setState({
+      cards: [],
+      clicked: [],
+      checkCards: []
+    }, this.start);
   }
 
   showCard = (i) => {
     const { clicked } = this.state;
 
-    if (clicked.length > 1) {
+    if (clicked.length > 1 || clicked[0] === i)  {
       return;
     }
 
@@ -46,12 +58,17 @@ class Grid extends Component {
       <Fragment>
       {
         checkCards.length === cards.length &&
-        <p className="StyleFont" id="message">
-          Bien joué
-        </p>
-
+        <Fragment>
+          <p id="message">
+            Bien joué !
+          </p>
+          <p id="rejouer">
+            <button id="rej" onClick={this.restart}>Rejouer</button>
+          </p>
+        </Fragment>
 
       }
+
       <ul>
         {
           cards.map(({ faces, current }, i) => (
