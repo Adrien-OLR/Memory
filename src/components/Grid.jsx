@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import shuffle from "lodash/shuffle";
+import cx from "classnames";
 
 class Grid extends Component {
   state = {
@@ -7,6 +8,9 @@ class Grid extends Component {
     clicked: [],
     checkCards: []
   }
+
+
+
   componentDidMount () {
     this.start();
   }
@@ -62,17 +66,16 @@ class Grid extends Component {
             <button id="rej" onClick={this.restart}>Rejouer</button>
           </p>
         </Fragment>
+
       }
 
       <ul>
         {
           cards.map(({ faces, current }, i) => (
-            <li key={i}>
-              <img
-                className="ygoface"
-                src={faces[(checkCards.indexOf(i) >= 0 || clicked.indexOf(i) >= 0) ? 1 : 0]}
-                onClick={() => this.showCard(i)}
-                alt="" />
+            <li key={i} onClick={() => this.showCard(i)} className={cx("card", { "flipped": clicked.indexOf(i) >= 0 || checkCards.indexOf(i) >= 0 })}>
+                <img className="dos" src={faces[0]} />
+                <img className="face" src={faces[1]} />
+
             </li>
           ))
         }
